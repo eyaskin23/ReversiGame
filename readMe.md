@@ -1,4 +1,4 @@
-## Welcome to Reversi : Evelyn Y.
+## Welcome to Reversi : Evelyn Y. check
 
 **Board Setup & Coordinates :**
 
