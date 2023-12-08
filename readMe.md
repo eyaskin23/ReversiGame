@@ -1,4 +1,4 @@
-## Welcome to Reversi : Sebastian F & Evelyn Y.
+## Welcome to Reversi : Evelyn Y.
 
 **Board Setup & Coordinates :**
 
