@@ -2,7 +2,8 @@ package view;
 
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
+import model.BoardModel;
 import model.HexShape;
 import model.ReadOnlyBoardModel;
 
@@ -30,7 +31,6 @@ import javax.swing.SwingUtilities;
  */
 public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocker {
   private Player currentPlayer;
-
   private ReadOnlyBoardModel board;
   boolean isClicked = false;
   private HexShape firstClickedHex;
@@ -54,19 +54,9 @@ public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocke
   public void update() {
     repaint();
 
-    if (board instanceof Board) {
+    if (board instanceof HexBoard) {
       handleGameOver();
     }
-  }
-
-  /**
-   * Updates the board of the ReadOnlyBoardModel to reflect the changes on the normal board.
-   */
-  public void updateBoard(ReadOnlyBoardModel newBoardModel) {
-    if (newBoardModel instanceof Board) {
-      board = newBoardModel;
-    }
-    repaint();
   }
 
   /**
@@ -223,7 +213,7 @@ public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocke
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    drawBoard(g, (Board) board);
+    drawBoard(g, (HexBoard) board);
 
     if (isClicked) {
       isClicked = false;
@@ -233,7 +223,6 @@ public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocke
   /**
    * Draws a single hexagon.
    */
-  @Override
   public void drawEachHexagon(Graphics g, HexShape hex, int centerX, int centerY,
                               int hexSize, PlayerType playerType) {
     int sides = 6;
@@ -291,8 +280,7 @@ public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocke
   /**
    * Builds the board out.
    */
-  @Override
-  public void drawBoard(Graphics g, Board board) {
+  public void drawBoard(Graphics g, HexBoard board) {
     int hexSize = getHexSize();
     int sizeOfEntireBoard = board.getBoardSize();
     int midPoint = board.getMidPoint();
@@ -393,6 +381,14 @@ public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocke
     JOptionPane.showMessageDialog(this, "It's your turn.",
             "Your Turn", JOptionPane.INFORMATION_MESSAGE);
     this.requestFocusInWindow();
+  }
+
+  @Override
+  public void updateBoard(BoardModel newBoardModel) {
+    if (newBoardModel instanceof HexBoard) {
+      board = newBoardModel;
+    }
+    repaint();
   }
 
   /**

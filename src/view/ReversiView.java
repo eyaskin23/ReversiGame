@@ -1,16 +1,20 @@
 package view;
 
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
+import model.BoardModel;
 import model.HexShape;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+
+import javax.swing.*;
 
 /**
  * Represents the view of a Reversi Board.
  */
 public interface ReversiView {
+
+  void setEventListener(PlayerActionListener playerAction);
 
   /**
    * Updates the view.
@@ -49,14 +53,29 @@ public interface ReversiView {
    */
   Color getColor(PlayerType playerType);
 
-  /**
-   * Draws the board out.
-   */
-  void drawBoard(Graphics g, Board board);
 
 
   /**
    * Gets the height of the window made.
    */
   int getWindowHeight();
+
+  void resetGameOverHandled();
+  void setScoreLabel(JLabel frame);
+
+  void showInvalidMoveMessage();
+
+  void showThatIPassedTurnMessage();
+
+  boolean getGameOverHandleState();
+
+  void handleGameOver();
+
+  void itIsNowYourTurnMessage();
+
+  void updateBoard(BoardModel board);
+
+  void updateScore(int blackScore, int whiteScore);
+
+  void itIsNotYourTurnMessage();
 }

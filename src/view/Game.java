@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import controller.ReversiController;
-import model.Board;
+import model.BoardModel;
 
 /**
  * Representing the game playing so that each controller can update one by one,
@@ -16,12 +16,12 @@ public class Game implements GameMocked {
   private Timer timer;
   private final ReversiController controller1;
   private final ReversiController controller2;
-  private final Board board;
+  private final BoardModel board;
 
   /**
    * Constructor that shows the entire game played, for updating purposes.
    */
-  public Game(ReversiController controller1, ReversiController controller2, Board board) {
+  public Game(ReversiController controller1, ReversiController controller2, BoardModel board) {
     this.controller1 = controller1;
     this.controller2 = controller2;
     this.board = board;

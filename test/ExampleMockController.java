@@ -6,7 +6,8 @@ import javax.swing.JLabel;
 import controller.MockController;
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
+import model.BoardModel;
+import model.HexBoard;
 import model.ReadOnlyBoardModel;
 import view.DrawUtils;
 
@@ -17,12 +18,12 @@ public class ExampleMockController {
 
   @Test
   public void testOnPass() {
-    ReadOnlyBoardModel board = new Board(7);
+    ReadOnlyBoardModel board = new HexBoard(7, false);
     Player player = new Player("Human", PlayerType.BLACK, board);
     DrawUtils view = new DrawUtils(board);
     JLabel score = new JLabel("Dummy Score");
     view.setScoreLabel(score);
-    Board boardReg = board.getRegularBoard();
+    BoardModel boardReg = board.getRegularBoard();
     MockController controller1 = new MockController(player, boardReg, view);
     player.setMoveHandler(controller1);
     controller1.onPass();
@@ -32,12 +33,12 @@ public class ExampleMockController {
 
   @Test
   public void testOnPlayerMove() {
-    ReadOnlyBoardModel board = new Board(7);
+    ReadOnlyBoardModel board = new HexBoard(7, false);
     Player player = new Player("Human", PlayerType.BLACK, board);
     DrawUtils view = new DrawUtils(board);
     JLabel score = new JLabel("Dummy Score");
     view.setScoreLabel(score);
-    Board boardReg = board.getRegularBoard();
+    BoardModel boardReg = board.getRegularBoard();
     MockController controller1 = new MockController(player, boardReg, view);
     player.setMoveHandler(controller1);
     controller1.onPlayerMove(-1,-1);

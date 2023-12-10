@@ -1,6 +1,6 @@
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class ExampleTextualView {
    */
   @Test
   public void testInitialBoard() {
-    Board board = new Board(11);
+    HexBoard board = new HexBoard(11, false);
     TextualController controller = new TextualController(board);
     Assert.assertEquals(controller.toString(),
             "     _ _ _ _ _ _ \n" +
@@ -49,7 +49,7 @@ public class ExampleTextualView {
    */
   @Test
   public void testMove() {
-    Board board = new Board(11);
+    HexBoard board = new HexBoard(11, false);
     TextualController controller = new TextualController(board);
     Player player1 = new Player("name", PlayerType.WHITE, board);
     player1.makeMove(-1, -1);
@@ -74,7 +74,7 @@ public class ExampleTextualView {
    */
   @Test
   public void testSecondMove() {
-    Board board = new Board(11);
+    HexBoard board = new HexBoard(11, false);
     TextualController controller = new TextualController(board);
     Player player1 = new Player("player1", PlayerType.WHITE, board);
     Player player2 = new Player("player2", PlayerType.BLACK, board);

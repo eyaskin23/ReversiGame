@@ -9,7 +9,7 @@ import java.util.List;
 
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
 
 /**
  * Main entry point for players to play Reversi.
@@ -23,15 +23,15 @@ public final class TextualEntry {
     System.out.println("Welcome to REVERSI!");
     System.out.println("What size board would you like (0 for default)?");
 
-    Board currentBoard;
+    HexBoard currentBoard;
     int chosenSizeOfBoard = scanner.nextInt();
     scanner.nextLine();
 
     try {
       if (chosenSizeOfBoard == 0) {
-        currentBoard = new Board();
+        currentBoard = new HexBoard();
       } else {
-        currentBoard = new Board(chosenSizeOfBoard);
+        currentBoard = new HexBoard(chosenSizeOfBoard, false);
       }
       TextualController boardGenerator = new TextualController(currentBoard);
       System.out.println(boardGenerator);

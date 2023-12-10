@@ -1,7 +1,7 @@
 package controller;
 
 import controller.players.Player;
-import model.Board;
+import model.BoardModel;
 import view.DrawUtils;
 
 /**
@@ -14,7 +14,7 @@ public class MockController extends ReversiController implements Features {
    * The constructor, that sets up the observers and make sure the game isn't over when started.
    * A controller consists of a player, board, and view.
    */
-  public MockController(Player player, Board board, DrawUtils view) {
+  public MockController(Player player, BoardModel board, DrawUtils view) {
     super(player, board, view);
     this.log = new StringBuilder();
   }

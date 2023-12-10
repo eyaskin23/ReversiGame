@@ -5,9 +5,12 @@ import controller.Command;
 import controller.players.Player;
 import controller.ReversiController;
 import model.Board;
+import model.BoardModel;
+import model.ReadOnlyBoardModel;
 import view.DrawUtils;
 import view.FrameSetup;
 import view.Game;
+import view.ReversiView;
 
 /**
  * Represents the GUI view.
@@ -24,10 +27,10 @@ public class Reversi {
 
     Command commandLine = new Command(args);
 
-    Board board = commandLine.getBoard();
+    BoardModel board = commandLine.getBoard();
 
-    DrawUtils view1 = new DrawUtils(board);
-    DrawUtils view2 = new DrawUtils(board);
+    ReversiView view1 = new DrawUtils(board);
+    ReversiView view2 = new DrawUtils(board);
 
     Player player1 = commandLine.getPlayer1();
     Player player2 = commandLine.getPlayer2();

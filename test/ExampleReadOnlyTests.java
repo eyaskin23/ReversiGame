@@ -1,6 +1,6 @@
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
 import model.HexShape;
 
 import org.junit.Assert;
@@ -13,7 +13,7 @@ import controller.TextualController;
  */
 public class ExampleReadOnlyTests {
 
-  Board board = new Board(11);
+  HexBoard board = new HexBoard(11, false);
 
   /**
    * Tests a Board that is given an even number which
@@ -21,7 +21,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testingEvenBoardInvalid() {
-    Assert.assertThrows(IllegalStateException.class, () -> new Board(12));
+    Assert.assertThrows(IllegalStateException.class, () -> new HexBoard(12, false));
   }
 
   /**
@@ -30,7 +30,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testingNegativeBoardValid() {
-    Assert.assertThrows(IllegalStateException.class, () -> new Board(-6));
+    Assert.assertThrows(IllegalStateException.class, () -> new HexBoard(-6, false));
   }
 
   /**
@@ -38,7 +38,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testingCoordinatesOfAHexagonBasedOn2DArray() {
-    Board regularBoard = new Board(7);
+    HexBoard regularBoard = new HexBoard(7, false);
 
     HexShape topLeft = regularBoard.getCurrentHex(0, 3);
     HexShape topLeftRepresentation = new HexShape(-3, 0, null);
@@ -117,7 +117,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testValidMove() {
-    Board board1 = new Board(7);
+    HexBoard board1 = new HexBoard(7, false);
     Assert.assertTrue(board1.isValidMove(-1, -1, PlayerType.WHITE));
   }
 
@@ -146,7 +146,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testCount() {
-    Board board = new Board(11);
+    HexBoard board = new HexBoard(11, false);
     Player player1 = new Player("e", PlayerType.WHITE, board);
 
     player1.makeMove(-1, -1);
@@ -167,7 +167,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testBothPlayersPassed() {
-    Board board = new Board();
+    HexBoard board = new HexBoard();
 
     Player player1 = new Player("e", PlayerType.WHITE, board);
     Player player2 = new Player("s", PlayerType.BLACK, board);
@@ -180,7 +180,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testTrapped() {
-    Board board = new Board();
+    HexBoard board = new HexBoard();
 
     HexShape hex = new HexShape(0, 0, null);
     hex.setPlayerType(PlayerType.EMPTY);
@@ -196,13 +196,13 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testGetBoardSize() {
-    Board board1 = new Board(11);
+    HexBoard board1 = new HexBoard(11, false);
     Assert.assertEquals(11, board1.getBoardSize());
 
-    Board board2 = new Board();
+    HexBoard board2 = new HexBoard();
     Assert.assertEquals(7, board2.getBoardSize());
 
-    Board board3 = new Board(15);
+    HexBoard board3 = new HexBoard(15, false);
     Assert.assertEquals(15, board3.getBoardSize());
 
   }
@@ -212,7 +212,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testCountPiecesAfter1Move() {
-    Board board1 = new Board(7);
+    HexBoard board1 = new HexBoard(7, false);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
@@ -228,7 +228,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testIsBoardFullWhenBoardIsInitialized() {
-    Board board1 = new Board();
+    HexBoard board1 = new HexBoard();
     Assert.assertFalse(board1.isBoardFull());
   }
 
@@ -237,7 +237,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testValidCoordinates() {
-    Board board = new Board(7); // board size is now 7
+    HexBoard board = new HexBoard(7, false); // board size is now 7
 
     Assert.assertTrue(board.isValidCoordinate(0, 0));  // Top-left corner
     Assert.assertTrue(board.isValidCoordinate(0, 6));  // Top-right corner
@@ -251,7 +251,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testInvalidCoordinates() {
-    Board board = new Board(7); // board size is now 7
+    HexBoard board = new HexBoard(7, false); // board size is now 7
 
     Assert.assertFalse(board.isValidCoordinate(-1, 0));  // Negative q
     Assert.assertFalse(board.isValidCoordinate(0, -1));  // Negative r
@@ -267,7 +267,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testIsBoardFullWhenBoardConsistsOfAllPlayerTypes() {
-    Board board1 = new Board();
+    HexBoard board1 = new HexBoard();
     for (HexShape[] row : board1.cellsThatMakeTheBoard) {
 
       for (HexShape hexShape : row) {
@@ -285,7 +285,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testGetScore() {
-    Board board = new Board();
+    HexBoard board = new HexBoard();
     Assert.assertEquals(
             "Checking that the starting number of white pieces is 3",
             board.getScoreWhite(), 3);
@@ -312,13 +312,13 @@ public class ExampleReadOnlyTests {
 
   @Test
   public void testCopy() {
-    Board original = new Board(7);
+    HexBoard original = new HexBoard(7, false);
     original.placePiece(3, 3, PlayerType.BLACK);
     original.placePiece(4, 4, PlayerType.WHITE);
     original.playerPass(PlayerType.WHITE);
     original.playerPass(PlayerType.BLACK);
 
-    Board copied = original.deepCopy();
+    HexBoard copied = original.deepCopy();
 
     Assert.assertNotSame("Copied board should not be the same as original board",
             original, copied);

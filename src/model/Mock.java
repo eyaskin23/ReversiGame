@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Represents a mock board used for testing strategies.
  */
-public class Mock extends Board
+public class Mock extends HexBoard
         implements ReadOnlyBoardModel, BoardModel {
   List<Move> validMoves;
   StringBuilder log;

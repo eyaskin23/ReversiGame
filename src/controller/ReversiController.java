@@ -3,10 +3,11 @@ package controller;
 import controller.players.AIPlayer;
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
-import view.DrawUtils;
+import model.BoardModel;
+import view.MockViewClass;
 import view.Observer;
 import view.PlayerActionListener;
+import view.ReversiView;
 
 /**
  * The main controller for a player to interact with a board through the view.
@@ -14,8 +15,8 @@ import view.PlayerActionListener;
  */
 public class ReversiController implements PlayerActionListener, Observer, MoveHandler {
   private final Player player;
-  private Board board;
-  private DrawUtils view;
+  private BoardModel board;
+  private ReversiView view;
   private boolean turnMessageDisplayed = false;
   private boolean isUpdating = false;
 
@@ -24,7 +25,7 @@ public class ReversiController implements PlayerActionListener, Observer, MoveHa
    * The constructor, that sets up the observers and make sure the game isn't over when started.
    * A controller consists of a player, board, and view.
    */
-  public ReversiController(Player player, Board board, DrawUtils view) {
+  public ReversiController(Player player, BoardModel board, MockViewClass view) {
     if (player == null) {
       throw new IllegalArgumentException("Player cannot be null");
     }
@@ -136,7 +137,7 @@ public class ReversiController implements PlayerActionListener, Observer, MoveHa
           turnMessageDisplayed = false;
         }
         view.updateBoard(board);
-        view.requestFocusInWindow();
+        //view.requestFocusInWindow();
       }
     } finally {
       isUpdating = false;

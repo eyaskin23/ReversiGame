@@ -1,7 +1,8 @@
 package view;
 
 import controller.ReversiController;
-import model.Board;
+import model.BoardModel;
+import model.HexBoard;
 
 /**
  * Extends the Game class for testing, and the mocked version of it.
@@ -12,7 +13,7 @@ public class MockGame extends Game implements GameMocked {
   /**
    * Constructor that shows the entire game played, for updating purposes.
    */
-  public MockGame(ReversiController controller1, ReversiController controller2, Board board) {
+  public MockGame(ReversiController controller1, ReversiController controller2, BoardModel board) {
     super(controller1, controller2, board);
     this.log = new StringBuilder();
   }

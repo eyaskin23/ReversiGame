@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Sets up a board for the controller to use.
  */
-public class Board implements ReadOnlyBoardModel, BoardModel {
+public class HexBoard implements ReadOnlyBoardModel, BoardModel {
   private boolean isGameOver = false;
 
   private List<Observer> observers = new ArrayList<>();
@@ -40,8 +40,8 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
    * Controller used in the mine to set the size of the board.
    * A default board is size 7.
    */
-  public Board() {
-    this(7);
+  public HexBoard() {
+    this(7, false);
   }
 
   /**
@@ -49,48 +49,47 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
    * Throws an exception if the game size is even or less than 5,
    * because a valid hexagon cannot be created from either value.
    */
-  public Board(int sizeOfBoard) {
+  public HexBoard(int sizeOfBoard, boolean isForSquare) {
     this.currentTurn = PlayerType.BLACK;
-    if (sizeOfBoard < 5 || (sizeOfBoard % 2 == 0)) {
-      throw new IllegalStateException("The game must be a minimum of size 5 and cannot be even!");
-    }
+
+//    if ((isForSquare && sizeOfBoard % 2 != 0) || sizeOfBoard < 5) {
+//      throw new IllegalStateException("The game must be a minimum of size 5, and if it's for squares, it must be even!");
+//    }
 
     boardSize = sizeOfBoard;
     cellsThatMakeTheBoard = new HexShape[boardSize][boardSize];
-    int midPoint = boardSize / 2;
 
     for (int row = 0; row < boardSize; row++) {
-      int startQ;
-      int endQ;
-
-      if (row <= midPoint) {
-        startQ = midPoint - row;
-        endQ = boardSize;
-      } else {
-        startQ = 0;
-        endQ = boardSize - row + midPoint;
-      }
-
-      for (int column = startQ; column < endQ; column++) {
-        int q = column - midPoint;
-        int r = row - midPoint;
+      for (int column = 0; column < boardSize; column++) {
+        int q = column - boardSize / 2;
+        int r = row - boardSize / 2;
         cellsThatMakeTheBoard[row][column] = new HexShape(r, q, null);
       }
     }
-    this.getCurrentHex(this.boardSize / 2,
-            this.boardSize / 2 + 1).setPlayerType(PlayerType.BLACK);
-    this.getCurrentHex(this.boardSize / 2 + 1,
-            this.boardSize / 2).setPlayerType(PlayerType.WHITE);
-    this.getCurrentHex(this.boardSize / 2,
-            this.boardSize / 2 - 1).setPlayerType(PlayerType.WHITE);
-    this.getCurrentHex(this.boardSize / 2 + 1,
-            this.boardSize / 2 - 1).setPlayerType(PlayerType.BLACK);
-    this.getCurrentHex(this.boardSize / 2 - 1,
-            this.boardSize / 2).setPlayerType(PlayerType.BLACK);
-    this.getCurrentHex(this.boardSize / 2 - 1,
-            this.boardSize / 2 + 1).setPlayerType(PlayerType.WHITE);
 
+    if (isForSquare) {
+      // Set initial player positions based on square setup
+      int midRow = boardSize / 2;
+      int midCol = boardSize / 2;
+
+      this.getCurrentHex(midRow, midCol - 1).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(midRow - 1, midCol).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(midRow, midCol).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(midRow - 1, midCol - 1).setPlayerType(PlayerType.BLACK);
+    } else {
+      // Set initial player positions based on hexagonal setup
+      int midRow = boardSize / 2;
+      int midCol = boardSize / 2 + 1;
+
+      this.getCurrentHex(midRow, midCol).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(midRow + 1, midCol - 1).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(midRow, midCol - 1).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(midRow + 1, midCol - 1).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(midRow - 1, midCol).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(midRow - 1, midCol + 1).setPlayerType(PlayerType.WHITE);
+    }
   }
+
 
   /**
    * Returns the current hex shape based on row and column.
@@ -102,7 +101,6 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
   public ReadOnlyBoardModel getReadOnlyBoard() {
     return this;
   }
-
 
   public void switchTurns() {
     currentTurn = (currentTurn == PlayerType.BLACK) ? PlayerType.WHITE : PlayerType.BLACK;
@@ -244,6 +242,9 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
     return q >= 0 && q < this.getBoardSize() && r >= 0 && r < this.getBoardSize();
   }
 
+  private boolean isValidSquareCoordinate(int row, int col) {
+    return row >= 0 && row < this.getBoardSize() && col >= 0 && col < this.getBoardSize();
+  }
 
   /**
    * Places a certain piece in the board, based on
@@ -259,6 +260,7 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
   /**
    * Changes the state of each player if they passed or not.
    */
+  @Override
   public void playerPass(PlayerType playerType) {
     if (playerType == PlayerType.WHITE) {
       whitePassed = true;
@@ -362,12 +364,12 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
   /**
    * Returns the midPoint of a board.
    */
+  @Override
   public int getMidPoint() {
     return this.getBoardSize() / 2;
   }
 
-  @Override
-  public Board getRegularBoard() {
+  public HexBoard getRegularBoard() {
     return this;
   }
 
@@ -379,6 +381,7 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
   /**
    * Checks whether a player has passed their turn.
    */
+  @Override
   public boolean hasPlayerPassed(PlayerType type) {
     if (type == PlayerType.WHITE) {
       return whitePassed;
@@ -391,8 +394,8 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
   /**
    * Makes a deep copy of the board that players can access.
    */
-  public Board deepCopy() {
-    Board newBoard = new Board(this.boardSize);
+  public HexBoard deepCopy() {
+    HexBoard newBoard = new HexBoard(this.boardSize, false);
     for (int i = 0; i < boardSize; i++) {
       for (int j = 0; j < boardSize; j++) {
         if (this.cellsThatMakeTheBoard[i][j] != null) {
@@ -412,45 +415,21 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
   public List<Move> getValidMovesWithCaptures(Player player) {
     List<Move> validMoves = new ArrayList<>();
 
-    for (int currentRow = 0; currentRow < getBoardSize(); currentRow++) {
-      int currentHexesMade;
-      if (currentRow <= getMidPoint()) {
-        currentHexesMade = getMidPoint() + currentRow + 1;
-      } else {
-        currentHexesMade = getBoardSize() - (currentRow - getMidPoint());
-      }
-      int spacesBefore = (getBoardSize() - currentHexesMade);
-      for (int h = 0; h < currentHexesMade; h++) {
-        HexShape currentHex;
+    for (int row = 0; row < getBoardSize(); row++) {
+      for (int col = 0; col < getBoardSize(); col++) {
+        HexShape currentHex = this.getCurrentHex(row, col);
 
-        if (currentRow <= getMidPoint()) {
-          currentHex = this.getCurrentHex(currentRow, h + spacesBefore);
+        if (currentHex != null) {
+          int q = Integer.parseInt(currentHex.getColumn());
+          int r = Integer.parseInt(currentHex.getRow());
 
-          if (isValidMove(Integer.parseInt(currentHex.getColumn()),
-                  Integer.parseInt(currentHex.getRow()), player.getType())) {
+          if (isValidMove(q, r, player.getType())) {
+            int piecesThatAreFlipped = calculateCaptures(q, r, player.getType(), this);
 
-            int piecesThatAreFlipped = calculateCaptures((Integer.parseInt(currentHex.getColumn())),
-                    Integer.parseInt(currentHex.getRow()), player.getType(), this);
-
-            validMoves.add(new Move((Integer.parseInt(currentHex.getColumn())),
-                    Integer.parseInt(currentHex.getRow()), piecesThatAreFlipped));
-          }
-
-        } else {
-          currentHex = this.getCurrentHex(currentRow, h);
-
-          if (isValidMove(Integer.parseInt(currentHex.getColumn()),
-                  Integer.parseInt(currentHex.getRow()), player.getType())) {
-
-            int piecesThatAreFlipped = calculateCaptures((Integer.parseInt(currentHex.getColumn())),
-                    Integer.parseInt(currentHex.getRow()), player.getType(), this);
-
-            validMoves.add(new Move((Integer.parseInt(currentHex.getColumn())),
-                    Integer.parseInt(currentHex.getRow()), piecesThatAreFlipped));
+            validMoves.add(new Move(q, r, piecesThatAreFlipped));
           }
         }
       }
-
     }
     return validMoves;
   }
@@ -468,11 +447,10 @@ public class Board implements ReadOnlyBoardModel, BoardModel {
             (x == boardSize - 1 && y == boardSize - 1);
   }
 
-
   /**
    * Calculates the amount of capture a move does.
    */
-  public int calculateCaptures(int q, int r, PlayerType player, Board board) {
+  public int calculateCaptures(int q, int r, PlayerType player, HexBoard board) {
     int x = q + board.getBoardSize() / 2;
     int y = r + board.getBoardSize() / 2;
     int count = 0;

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
 import model.Move;
 
 /**
@@ -15,7 +15,7 @@ import model.Move;
  */
 public class ExampleBoardTests {
 
-  Board board = new Board(11);
+  HexBoard board = new HexBoard(11, false);
 
 
   /**
@@ -30,7 +30,7 @@ public class ExampleBoardTests {
 
   @Test
   public void testCalculatePiecesWithAValidMove() {
-    Board defaultBoard = new Board(7);
+    HexBoard defaultBoard = new HexBoard(7, false);
     Player player1 = new Player("Player 1", PlayerType.WHITE, defaultBoard);
     Player player2 = new Player("Player 2", PlayerType.BLACK, defaultBoard);
     int k = defaultBoard.calculateCaptures(-1, -1, player1.getType(), defaultBoard);
@@ -39,7 +39,7 @@ public class ExampleBoardTests {
 
   @Test
   public void testGetValidMovesWithCaptures() {
-    Board defaultBoard = new Board(7);
+    HexBoard defaultBoard = new HexBoard(7, false);
     Player player1 = new Player("Player 1", PlayerType.WHITE, defaultBoard);
     Player player2 = new Player("Player 2", PlayerType.BLACK, defaultBoard);
     List<Move> validMoves = defaultBoard.getValidMovesWithCaptures(player1);

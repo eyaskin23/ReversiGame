@@ -1,4 +1,4 @@
-import model.Board;
+import model.HexBoard;
 import model.HexShape;
 
 import org.junit.Assert;
@@ -16,7 +16,7 @@ import java.awt.Dimension;
  */
 public class ExampleDrawTests {
 
-  Board board = new Board();
+  HexBoard board = new HexBoard();
   DrawUtils draw = new DrawUtils(board);
 
   @Test
@@ -28,7 +28,7 @@ public class ExampleDrawTests {
   @Test
   public void testInitialization() {
     JFrame frame = new JFrame();
-    DrawUtils draw = new DrawUtils(new Board(11));
+    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
     frame.add(draw);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 600);
@@ -47,7 +47,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testFindHex() {
-    DrawUtils draw = new DrawUtils(new Board(11));
+    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
     int x = draw.getWidth() / 2;
     int y = draw.getHeight() / 2;
     HexShape hex = draw.findHex(x, y);
@@ -56,7 +56,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetHexSize() {
-    DrawUtils draw = new DrawUtils(new Board(11));
+    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
     draw.setSize(600, 600);
     int hexSize = draw.getHexSize();
     System.out.print(draw.getHexSize());
@@ -65,7 +65,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testIsPointInHex() {
-    DrawUtils draw = new DrawUtils(new Board(11));
+    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
     int x = draw.getWidth() / 2;
     int y = draw.getHeight() / 2;
 
@@ -76,7 +76,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetWindowWidth() {
-    DrawUtils draw = new DrawUtils(new Board(11));
+    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
 
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +96,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetWindowHeight() {
-    DrawUtils draw = new DrawUtils(new Board(11));
+    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
     draw.setSize(600, 600);
     int windowHeight = draw.getWindowHeight();
     Assert.assertEquals(windowHeight, 600);

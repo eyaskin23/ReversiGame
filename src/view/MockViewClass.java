@@ -8,14 +8,14 @@ import model.ReadOnlyBoardModel;
  * Mocks the view class for testing.
  */
 
-public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
+public class MockViewClass implements DrawInterfaceMocker {
   private final StringBuilder log;
+  private DrawUtils view;
 
   /**
    * Constructor for the Mocked View.
    */
   public MockViewClass(ReadOnlyBoardModel board) {
-    super(board);
     this.log = new StringBuilder();
   }
 
@@ -26,7 +26,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void handleGameOver() {
     this.log.append("Handled Game Over");
-    super.handleGameOver();
+    view.handleGameOver();
   }
 
   /**
@@ -35,7 +35,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void showInvalidMoveMessage() {
     this.log.append("Invalid Move Pop Up");
-    super.showInvalidMoveMessage();
+    view.showInvalidMoveMessage();
 
   }
 
@@ -45,7 +45,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void showThatIPassedTurnMessage() {
     this.log.append("I passed turn Pop Up.");
-    super.showThatIPassedTurnMessage();
+    view.showThatIPassedTurnMessage();
   }
 
   /**
@@ -54,7 +54,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void itIsNowYourTurnMessage() {
     this.log.append("It is now my turn pop up.");
-    super.itIsNowYourTurnMessage();
+    view.itIsNowYourTurnMessage();
 
   }
 
@@ -73,7 +73,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void resetGameOverHandled() {
     this.log.append("Resetting Game Over Handling.");
-    super.resetGameOverHandled();
+    view.resetGameOverHandled();
   }
 
   /**
@@ -82,7 +82,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void itIsNotYourTurnMessage() {
     this.log.append("It is not your turn pop up.");
-    super.itIsNotYourTurnMessage();
+    view.itIsNotYourTurnMessage();
   }
 
   /**
@@ -91,8 +91,9 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void updateScore(int blackScore, int whiteScore) {
     this.log.append("Updated Score.");
-    super.updateScore(blackScore, whiteScore);
+    view.updateScore(blackScore, whiteScore);
   }
+
 
   /**
    * Responsible for setting the score.
@@ -100,7 +101,7 @@ public class MockViewClass extends DrawUtils implements DrawInterfaceMocker {
   @Override
   public void setScoreLabel(JLabel scoreLabel) {
     this.log.append("Setting Score.");
-    super.setScoreLabel(scoreLabel);
+    view.setScoreLabel(scoreLabel);
   }
 
   /**

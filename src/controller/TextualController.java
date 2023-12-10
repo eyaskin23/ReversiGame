@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 
-import model.Board;
+import model.HexBoard;
 import model.HexShape;
 import view.ReversiTextualView;
 
@@ -12,14 +12,14 @@ import view.ReversiTextualView;
  */
 
 public class TextualController implements ReversiTextualView {
-  private final Board board;
+  private final HexBoard board;
   private final Appendable output;
 
   /**
    * controller.TextualController constructor that only takes in the model which
    * is the first game state.
    */
-  public TextualController(Board board) {
+  public TextualController(HexBoard board) {
     if (board == null) {
       throw new IllegalArgumentException("model.Board cannot be null");
     }
@@ -30,7 +30,7 @@ public class TextualController implements ReversiTextualView {
   /**
    * Constructor for controller.TextualController.
    */
-  public TextualController(Board board, Appendable output) {
+  public TextualController(HexBoard board, Appendable output) {
     if (board == null) {
       throw new IllegalArgumentException("model.Board cannot be null");
     }

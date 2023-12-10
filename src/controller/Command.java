@@ -4,6 +4,8 @@ import controller.players.AIPlayer;
 import controller.players.Player;
 import controller.players.PlayerType;
 import model.Board;
+import model.BoardModel;
+import model.HexBoard;
 import model.ReadOnlyBoardModel;
 import model.strategies.CaptureStrategy;
 import model.strategies.GoForCornersStrategy;
@@ -38,7 +40,7 @@ public class Command {
     }
 
     this.boardSize = Integer.parseInt(args[0]);
-    this.board = new Board(boardSize);
+    this.board = new HexBoard(boardSize, isSquare(args[3]));
 
     player1 = findThePlayer(args, 1);
     player2 = findThePlayer(args, 2);
@@ -98,6 +100,17 @@ public class Command {
     }
   }
 
+  private boolean isSquare(String input) {
+    switch(input.toLowerCase()) {
+      case "square":
+        return true;
+      case "hex":
+        return false;
+      default:
+        throw new IllegalArgumentException("Need to specify type of board");
+    }
+  }
+
   /**
    * Creates a player.
    */
@@ -154,7 +167,7 @@ public class Command {
   /**
    * Gets the regular board, from the readOnly Board that the players use.
    */
-  public Board getBoard() {
+  public BoardModel getBoard() {
     return board.getRegularBoard();
   }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
 import model.Move;
 
 /**
@@ -21,7 +21,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testPass() {
-    Board board1 = new Board(7);
+    HexBoard board1 = new HexBoard(7, false);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     player1.makeMove(-1, -1);
@@ -37,7 +37,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetScoreWhiteBlack() {
-    Board board = new Board(7);
+    HexBoard board = new HexBoard(7, false);
     List<Move> valid = new ArrayList<>();
     valid.add(new Move(0, 1));
     valid.add(new Move(1, 1));
@@ -51,7 +51,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetBoardSize() {
-    Board board = new Board(7);
+    HexBoard board = new HexBoard(7, false);
     List<Move> valid = new ArrayList<>();
     valid.add(new Move(0, 1));
     valid.add(new Move(1, 1));
@@ -66,7 +66,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testBoardFull() {
-    Board board = new Board(7);
+    HexBoard board = new HexBoard(7, false);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     StringBuilder sb = new StringBuilder();
@@ -79,7 +79,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void countPieces() {
-    Board board = new Board(7);
+    HexBoard board = new HexBoard(7, false);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board, gfc);
@@ -93,7 +93,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testIsValidMove() {
-    Board board1 = new Board();
+    HexBoard board1 = new HexBoard();
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board1, gfc);
@@ -107,7 +107,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testValidCoordinate() {
-    Board board = new Board(7);
+    HexBoard board = new HexBoard(7, false);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board, gfc);
@@ -121,8 +121,8 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetValidMovesWithCaptures() {
-    ReadOnlyBoardModel board = new Board(7);
-    Board board1 = new Board();
+    ReadOnlyBoardModel board = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard();
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board1, gfc);
@@ -136,7 +136,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testIsCornerMove() {
-    Board board = new Board(7);
+    HexBoard board = new HexBoard(7, false);
     List<Move> valid = new ArrayList<>();
     Move move = new Move(0, 0);
     valid.add(move);

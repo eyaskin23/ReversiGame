@@ -37,7 +37,11 @@ public interface ReadOnlyBoardModel {
 
   int getMidPoint();
 
-  Board getRegularBoard();
+  BoardModel getRegularBoard();
 
   PlayerType getCurrentTurn();
+
+  boolean isPlayerTurn(Player player);
+
+  void checkGameOver();
 }

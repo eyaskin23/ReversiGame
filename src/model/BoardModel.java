@@ -14,4 +14,12 @@ public interface BoardModel extends ReadOnlyBoardModel {
   void placePiece(int q, int r, PlayerType type);
 
   void addObserver(Observer o);
+
+  void resetWhitePassed();
+
+  void resetBlackPassed();
+
+  void notifyObservers();
+
+  void switchTurns();
 }

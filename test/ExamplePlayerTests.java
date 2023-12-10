@@ -1,6 +1,6 @@
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
+import model.HexBoard;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testGetName() {
-    Board firstBoard = new Board();
+    HexBoard firstBoard = new HexBoard();
     Player one = new Player("Sebastian", PlayerType.BLACK, firstBoard);
     Player two = new Player("Christian", PlayerType.WHITE, firstBoard);
     Assert.assertEquals(one.getName(), "Sebastian");
@@ -27,7 +27,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testGetType() {
-    Board firstBoard = new Board();
+    HexBoard firstBoard = new HexBoard();
     Player one = new Player("Sebastian", PlayerType.BLACK, firstBoard);
     Player two = new Player("Christian", PlayerType.WHITE, firstBoard);
     Assert.assertEquals(one.getType(), PlayerType.BLACK);
@@ -39,7 +39,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void hasPassed() {
-    Board firstBoard = new Board();
+    HexBoard firstBoard = new HexBoard();
     Player one = new Player("Sebastian", PlayerType.BLACK, firstBoard);
     Player two = new Player("Christian", PlayerType.WHITE, firstBoard);
     Assert.assertFalse(one.hasPassed);
@@ -50,7 +50,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void setHasPassed() {
-    Board firstBoard = new Board();
+    HexBoard firstBoard = new HexBoard();
     Player one = new Player("Sebastian", PlayerType.BLACK, firstBoard);
     Player two = new Player("Christian", PlayerType.WHITE, firstBoard);
     Assert.assertFalse(one.hasPassed);
@@ -61,7 +61,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testPlaceKey() {
-    Board firstBoard = new Board(7);
+    HexBoard firstBoard = new HexBoard(7, false);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     one.makeMove(-1, -1);
@@ -74,7 +74,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testHasPassedInitalState() {
-    Board firstBoard = new Board(7);
+    HexBoard firstBoard = new HexBoard(7, false);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     Assert.assertFalse(one.hasPassed);
