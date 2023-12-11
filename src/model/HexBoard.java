@@ -149,7 +149,6 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
       int nextQ = x + dir.getQMove();
       int nextR = y + dir.getRMove();
 
-      // Skip if the next hex is not opponent's or out of bounds
       if (!isValidCoordinate(nextQ, nextR)) {
         continue;
       }
@@ -470,12 +469,12 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
 
       while (isValidCoordinate(nextQ, nextR) && getCurrentHex(nextR, nextQ) != null
               && getCurrentHex(nextR, nextQ).getPlayerType() == opponent) {
-        piecesToFlip.add(getCurrentHex(nextR, nextQ)); // Swap nextQ and nextR
+        piecesToFlip.add(getCurrentHex(nextR, nextQ));
         nextQ += dir.getQMove();
         nextR += dir.getRMove();
 
         if (isValidCoordinate(nextQ, nextR) && getCurrentHex(nextR, nextQ) != null) {
-          HexShape currentHex = getCurrentHex(nextR, nextQ); // Swap nextQ and nextR
+          HexShape currentHex = getCurrentHex(nextR, nextQ);
           if (currentHex.getPlayerType() == player) {
             count += piecesToFlip.size();
             break;

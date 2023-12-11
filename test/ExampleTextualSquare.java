@@ -1,12 +1,11 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import controller.TextualController;
 import controller.TextualSquareController;
-import controller.players.Player;
-import controller.players.PlayerType;
-import model.HexBoard;
 
+/**
+ * Tests the controller initiates correctly for the textual square board.
+ */
 public class ExampleTextualSquare {
 
   /**

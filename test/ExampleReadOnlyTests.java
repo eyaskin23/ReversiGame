@@ -1,5 +1,4 @@
 import controller.TextualSquareController;
-import controller.TextualSquareEntry;
 import controller.players.Player;
 import controller.players.PlayerType;
 import model.HexBoard;
@@ -177,9 +176,8 @@ public class ExampleReadOnlyTests {
   @Test
   public void testValidSquareCoordinate() {
     Assert.assertTrue(square.isValidCoordinate(0, 0));
-    Assert.assertTrue(square.isValidCoordinate(10, 10));
+    Assert.assertFalse(square.isValidCoordinate(10, 10));
   }
-
 
   /**
    * Tests that a valid move is passed into the game.

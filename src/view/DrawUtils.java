@@ -1,6 +1,5 @@
 package view;
 
-import controller.players.Player;
 import controller.players.PlayerType;
 import model.HexBoard;
 import model.BoardModel;

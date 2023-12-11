@@ -85,7 +85,6 @@ public final class TextualSquareEntry {
               currentBoard.placePiece(x, y, player.getType());
               validMoveMade = true;
             } catch (IllegalArgumentException e) {
-              // Silently catch for the computer, it will keep trying random positions
             }
           }
         } else {
@@ -103,7 +102,8 @@ public final class TextualSquareEntry {
 
             try {
 
-              System.out.println("Valid moves: " + currentBoard.getValidMovesWithCaptures(player).toString());
+              System.out.println("Valid moves: " +
+                      currentBoard.getValidMovesWithCaptures(player).toString());
 
               String playerInput = scanner.nextLine().trim();
 
@@ -118,7 +118,8 @@ public final class TextualSquareEntry {
                 } else {
                   String[] split = playerInput.split(",");
                   if (split.length != 2) {
-                    System.out.println("Invalid input format. Please enter coordinates in the form x,y.");
+                    System.out.println("Invalid input format. " +
+                            "Please enter coordinates in the form x,y.");
                     continue;
                   }
 
@@ -126,7 +127,8 @@ public final class TextualSquareEntry {
                   int secondCoordinate = Integer.parseInt(split[1]);
 
                   try {
-                    if (currentBoard.isValidMove(firstCoordinate, secondCoordinate, player.getType())) {
+                    if (currentBoard.isValidMove(firstCoordinate,
+                            secondCoordinate, player.getType())) {
                       currentBoard.placePiece(firstCoordinate, secondCoordinate, player.getType());
                       validMoveMade = true;
                     } else {

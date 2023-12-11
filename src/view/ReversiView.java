@@ -6,7 +6,6 @@ import model.HexShape;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Collection;
 
 import javax.swing.JLabel;
 

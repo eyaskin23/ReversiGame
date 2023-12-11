@@ -3,12 +3,14 @@ package controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import controller.players.PlayerType;
 import model.HexBoard;
 import view.ReversiTextualView;
 
+/**
+ * Controller to render the textual version of the square board.
+ */
 public class TextualSquareController implements ReversiTextualView {
   private final HexBoard board;
   private Appendable output;
@@ -43,14 +45,17 @@ public class TextualSquareController implements ReversiTextualView {
       for (int col = 0; col < sizeOfEntireBoard; col++) {
         char symbol;
 
-        if ((row == middleRow || row == middleRow - 1) && (col == middleCol || col == middleCol - 1)) {
-          if ((row == middleRow && col == middleCol) || (row == middleRow - 1 && col == middleCol - 1)) {
+        if ((row == middleRow || row == middleRow - 1) && (col == middleCol
+                || col == middleCol - 1)) {
+          if ((row == middleRow && col == middleCol) ||
+                  (row == middleRow - 1 && col == middleCol - 1)) {
             symbol = playerSymbols.get(PlayerType.BLACK);
           } else {
             symbol = playerSymbols.get(PlayerType.WHITE);
           }
         } else {
-          symbol = playerSymbols.getOrDefault(board.getCurrentHex(row, col).getPlayerType(), '-');
+          symbol = playerSymbols.getOrDefault(board.getCurrentHex(row, col)
+                  .getPlayerType(), '-');
         }
 
         stringMaker.append(symbol).append(' ');

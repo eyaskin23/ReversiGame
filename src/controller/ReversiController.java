@@ -4,7 +4,6 @@ import controller.players.AIPlayer;
 import controller.players.Player;
 import controller.players.PlayerType;
 import model.BoardModel;
-import view.MockViewClass;
 import view.Observer;
 import view.PlayerActionListener;
 import view.ReversiView;

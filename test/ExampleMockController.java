@@ -10,7 +10,6 @@ import model.BoardModel;
 import model.HexBoard;
 import model.ReadOnlyBoardModel;
 import view.DrawUtils;
-import view.ReversiView;
 
 /**
  * A set of examples to test the Mock Controller.

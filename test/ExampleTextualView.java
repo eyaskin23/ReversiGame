@@ -1,5 +1,3 @@
-import controller.players.Player;
-import controller.players.PlayerType;
 import model.HexBoard;
 
 import org.junit.Assert;
