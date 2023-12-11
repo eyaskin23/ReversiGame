@@ -30,18 +30,13 @@ import javax.swing.SwingUtilities;
  * Draws out our board and hexagons.
  */
 public class DrawUtils extends JPanel implements ReversiView, DrawInterfaceMocker {
-  private Player currentPlayer;
   private ReadOnlyBoardModel board;
   boolean isClicked = false;
   private HexShape firstClickedHex;
   private HexShape hoveredHex;
   PlayerActionListener playerAction;
   JLabel scoreLabel;
-  private Player humanPlayer;
-  private Player aiPlayer;
-
   private boolean isGameOverHandled = false;
-
 
   /**
    * Sets the player action for the view. Allowing the view to recognize the

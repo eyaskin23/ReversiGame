@@ -21,7 +21,6 @@ public class ExampleHexShape {
     Assert.assertEquals(hex.getPlayerType(), PlayerType.EMPTY);
   }
 
-
   /**
    * Tests that an s value is correct.
    */

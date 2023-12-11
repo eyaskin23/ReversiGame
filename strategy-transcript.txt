@@ -1,32 +1,84 @@
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
+Dec 11, 2023 12:05:45 AM model.strategies.CaptureStrategy selectMove
 INFO: Selecting move for player: Computer Black
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
+Dec 11, 2023 12:05:45 AM model.strategies.CaptureStrategy selectMove
 INFO: Selected move: 0, -2
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
+Dec 11, 2023 12:05:45 AM model.strategies.CaptureStrategy selectMove
 INFO: Capturing 1 pieces!
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
-INFO: Selecting move for player: Computer Black
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
-INFO: Selected move: 1, -2
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
+Dec 11, 2023 12:05:45 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:45 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -1, -2
+Dec 11, 2023 12:05:45 AM model.strategies.CaptureStrategy selectMove
 INFO: Capturing 1 pieces!
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
+Dec 11, 2023 12:05:46 AM model.strategies.CaptureStrategy selectMove
 INFO: Selecting move for player: Computer Black
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
-INFO: Selected move: 1, -2
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
+Dec 11, 2023 12:05:46 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -2, 0
+Dec 11, 2023 12:05:46 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:46 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:46 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -1, 1
+Dec 11, 2023 12:05:46 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:47 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 12:05:47 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -2, -2
+Dec 11, 2023 12:05:47 AM model.strategies.CaptureStrategy selectMove
 INFO: Capturing 1 pieces!
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
-INFO: Selecting move for player: Computer Black
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
-INFO: Selected move: 0, -2
-Dec 10, 2023 11:10:46 PM model.strategies.CaptureStrategy selectMove
-INFO: Capturing 1 pieces!
-Dec 10, 2023 11:10:46 PM model.strategies.GoForCornersStrategy selectMove
-INFO: Selecting move for player: Computer Black
-Dec 10, 2023 11:10:46 PM model.strategies.GoForCornersStrategy selectMove
-INFO: Selected move: 2, -1
-Dec 10, 2023 11:10:46 PM model.strategies.GoForCornersStrategy selectMove
-INFO: Selecting move for player: Computer Black
-Dec 10, 2023 11:10:46 PM model.strategies.GoForCornersStrategy selectMove
+Dec 11, 2023 12:05:47 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:47 AM model.strategies.CaptureStrategy selectMove
 INFO: Selected move: 1, -1
+Dec 11, 2023 12:05:47 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:48 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 12:05:48 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -1, 2
+Dec 11, 2023 12:05:48 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 3 pieces!
+Dec 11, 2023 12:05:48 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:48 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -3, 0
+Dec 11, 2023 12:05:48 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:49 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 12:05:49 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 2, -2
+Dec 11, 2023 12:05:49 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:49 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:49 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -1, -3
+Dec 11, 2023 12:05:49 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:50 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 12:05:50 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -1, -4
+Dec 11, 2023 12:05:50 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 4 pieces!
+Dec 11, 2023 12:05:50 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:50 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 1, -3
+Dec 11, 2023 12:05:50 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:51 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 12:05:51 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 0, -3
+Dec 11, 2023 12:05:51 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 2 pieces!
+Dec 11, 2023 12:05:51 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer White
+Dec 11, 2023 12:05:51 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: -1, 3
+Dec 11, 2023 12:05:51 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 3 pieces!

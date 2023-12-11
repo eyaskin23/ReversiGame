@@ -16,21 +16,25 @@ import java.awt.Dimension;
  * Tests the draw states of the board.
  */
 public class ExampleDrawTests {
-
   HexBoard board = new HexBoard();
   DrawUtils draw = new DrawUtils(board);
+  SquareView square = new SquareView(board);
 
   @Test
   public void testSize() {
     draw.setSize(new Dimension(600, 600));
+    square.setSize(new Dimension(600, 600));
     Assert.assertEquals(draw.getSize(), new Dimension(600, 600));
+    Assert.assertEquals(square.getSize(), new Dimension(600, 600));
   }
 
   @Test
   public void testInitialization() {
     JFrame frame = new JFrame();
     DrawUtils draw = new DrawUtils(new HexBoard(11, false));
+    SquareView square = new SquareView(new HexBoard(8, true));
     frame.add(draw);
+    frame.add(square);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 600);
     frame.setVisible(true);
@@ -55,6 +59,11 @@ public class ExampleDrawTests {
     Assert.assertEquals(draw.getHeight(), 600);
     draw.setBackground(Color.GRAY);
     Assert.assertEquals(Color.GRAY, draw.getBackground());
+    square.setSize(600, 600);
+    Assert.assertEquals(square.getWindowWidth(), 600);
+    Assert.assertEquals(square.getHeight(), 600);
+    square.setBackground(Color.GRAY);
+    Assert.assertEquals(Color.GRAY, square.getBackground());
   }
 
   @Test
@@ -73,16 +82,13 @@ public class ExampleDrawTests {
     int hexSize = draw.getHexSize();
     System.out.print(draw.getHexSize());
     Assert.assertTrue(hexSize > 0 && hexSize % 2 == 0);
+    SquareView square = new SquareView(new HexBoard(8, true));
+    square.setSize(600, 600);
+    int hexSizeSquare = square.getHexSize();
+    System.out.print(draw.getHexSize());
+    Assert.assertTrue(hexSizeSquare > 0 && hexSizeSquare % 2 == 0);
   }
 
-  @Test
-  public void testGetHexSizeSquare() {
-    SquareView draw = new SquareView(new HexBoard(8, true));
-    draw.setSize(600, 600);
-    int hexSize = draw.getHexSize();
-    System.out.print(draw.getHexSize());
-    Assert.assertTrue(hexSize > 0 && hexSize % 2 == 0);
-  }
 
   @Test
   public void testIsPointInHex() {
@@ -166,5 +172,11 @@ public class ExampleDrawTests {
   public void testDraw() {
     draw.setSize(600, 600);
     Assert.assertEquals(new Color(0, 34, 83), draw.getBackground());
+  }
+
+  @Test
+  public void testDrawSquare() {
+    square.setSize(600, 600);
+    Assert.assertEquals(new Color(0, 34, 83), square.getBackground());
   }
 }

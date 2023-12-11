@@ -1,4 +1,4 @@
-## Welcome to Reversi : Evelyn Y. check
+## Welcome to Reversi : Evelyn Yaskin
 
 **Board Setup & Coordinates :**
 
@@ -295,3 +295,44 @@ The **DrawUtils** class is responsible for drawing the hexagonal board. It uses 
   - java -jar Reversi.jar 7 capture capture
   - ###### Conditions
     - If a user decides to do a chained strategy with two of the same strategies, it will just call the one strategy as its strategy
+
+
+## EXTRA CREDIT (Square Reversi)
+
+New Classes I Made (No new interfaces):
+- ReversiSquare --> This is a new main class that takes in two square views instead of my original view
+  - This class takes in the same controllers and command line prompt as used from before.
+  - I decided to create a separate class for this method so that a user can toggle between configurations to switch between the two different types of games,
+    (makes it easier for the user, instead of having to change the code in the main to support different views). 
+- SquareView --> This is a new view class for my square board, implements the same interfaces 
+  - had to make a new view class, so that the view could be setup differently, i used the same methods
+  - i also was able to use my same HexShape object and coordinate system, nothing caused issues while switching over
+- TextualSquareController
+  - Made a new controller to render the square board textual
+  - had to make a new class for this so that i could override the toString() method again
+- TextualSquareEntry
+  - this textual entry is a test for the textual board to see if the move works
+
+Model Implications
+- Added a boolean parameter to check whether a board was for a square implication or not
+- This makes it easier for users in the command line to run either game
+- I had to add a new check inside my board that ensures that the square view is now able to be even, but if the board is an instance of the original draw class
+than it makes sure that it still remains larger than 5 and is not even
+- I was able to use the functionality of most of my methods already written except for a few changes:
+  - had to update the constructor to only place 4 tiles for a square board
+
+Controller Implications
+- I used my same controller class from before
+- the only thing I changed was I took in my interface for the view parameter instead of my original DrawUtils view.
+
+Testing 
+- Added more tests for the square view in my existing tests classes to cover all cases covered by the new view 
+- ran the game with both AI Players/Humans to make sure functioning was correct
+- wrote more tests in my ExampleCaptureStrategies / ExampleDrawTests / ExampleBoardTests / ExampleGoForCorners /
+ExampleReadOnlyTests 
+- created tests for my textual entries as well
+
+General Observations
+- My classes were not too coupled, and it was overall easy to implement a new view into existing code
+- Changes primarily involved updating instances of the original view to use the ReversiView interface.
+- Creation of a new view for the square board was straightforward, and overall integration was smooth.

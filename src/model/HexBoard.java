@@ -78,9 +78,6 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
       this.getCurrentHex(midRow - 1, midCol - 1).setPlayerType(PlayerType.BLACK);
 
     } else {
-      int midRow = boardSize / 2;
-      int midCol = boardSize / 2 + 1;
-
       this.getCurrentHex(this.boardSize / 2,
               this.boardSize / 2 + 1).setPlayerType(PlayerType.BLACK);
       this.getCurrentHex(this.boardSize / 2 + 1,
@@ -487,7 +484,7 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
       }
 
     }
-      return count;
+    return count;
   }
 
   /**
