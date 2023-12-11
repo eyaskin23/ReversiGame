@@ -1,13 +1,14 @@
 package view;
 
 import controller.players.PlayerType;
-import model.HexBoard;
 import model.BoardModel;
 import model.HexShape;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Collection;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 /**
  * Represents the view of a Reversi Board.
@@ -61,6 +62,7 @@ public interface ReversiView {
   int getWindowHeight();
 
   void resetGameOverHandled();
+
   void setScoreLabel(JLabel frame);
 
   void showInvalidMoveMessage();
@@ -78,4 +80,5 @@ public interface ReversiView {
   void updateScore(int blackScore, int whiteScore);
 
   void itIsNotYourTurnMessage();
+
 }

@@ -7,7 +7,6 @@ import model.ReadOnlyBoardModel;
 /**
  * Mocks the view class for testing.
  */
-
 public class MockViewClass implements DrawInterfaceMocker {
   private final StringBuilder log;
   private DrawUtils view;
@@ -17,6 +16,7 @@ public class MockViewClass implements DrawInterfaceMocker {
    */
   public MockViewClass(ReadOnlyBoardModel board) {
     this.log = new StringBuilder();
+    this.view = new DrawUtils(board);
   }
 
 

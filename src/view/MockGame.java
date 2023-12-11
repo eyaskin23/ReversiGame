@@ -2,7 +2,6 @@ package view;
 
 import controller.ReversiController;
 import model.BoardModel;
-import model.HexBoard;
 
 /**
  * Extends the Game class for testing, and the mocked version of it.

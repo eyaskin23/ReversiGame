@@ -10,6 +10,7 @@ import model.BoardModel;
 import model.HexBoard;
 import model.ReadOnlyBoardModel;
 import view.DrawUtils;
+import view.ReversiView;
 
 /**
  * A set of examples to test the Mock Controller.
@@ -29,7 +30,6 @@ public class ExampleMockController {
     controller1.onPass();
     Assert.assertTrue(controller1.getLog().toString().contains("Player passed"));
   }
-
 
   @Test
   public void testOnPlayerMove() {

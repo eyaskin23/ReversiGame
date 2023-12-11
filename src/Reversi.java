@@ -4,9 +4,7 @@ import javax.swing.JLabel;
 import controller.Command;
 import controller.players.Player;
 import controller.ReversiController;
-import model.Board;
 import model.BoardModel;
-import model.ReadOnlyBoardModel;
 import view.DrawUtils;
 import view.FrameSetup;
 import view.Game;
@@ -16,9 +14,6 @@ import view.ReversiView;
  * Represents the GUI view.
  */
 public class Reversi {
-
-  private JLabel scoreLabel1; // Score label for first frame
-  private JLabel scoreLabel2; // Score label for second frame
 
   /**
    * Entry point for GUI.

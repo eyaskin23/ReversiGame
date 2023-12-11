@@ -52,9 +52,10 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
   public HexBoard(int sizeOfBoard, boolean isForSquare) {
     this.currentTurn = PlayerType.BLACK;
 
-//    if ((isForSquare && sizeOfBoard % 2 != 0) || sizeOfBoard < 5) {
-//      throw new IllegalStateException("The game must be a minimum of size 5, and if it's for squares, it must be even!");
-//    }
+    if ((isForSquare && sizeOfBoard % 2 != 0) || sizeOfBoard < 5) {
+      throw new IllegalStateException("The game must be a minimum of size 5, " +
+              "but if it's for squares, it must be even!");
+    }
 
     boardSize = sizeOfBoard;
     cellsThatMakeTheBoard = new HexShape[boardSize][boardSize];
@@ -68,7 +69,6 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
     }
 
     if (isForSquare) {
-      // Set initial player positions based on square setup
       int midRow = boardSize / 2;
       int midCol = boardSize / 2;
 
@@ -76,17 +76,23 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
       this.getCurrentHex(midRow - 1, midCol).setPlayerType(PlayerType.WHITE);
       this.getCurrentHex(midRow, midCol).setPlayerType(PlayerType.BLACK);
       this.getCurrentHex(midRow - 1, midCol - 1).setPlayerType(PlayerType.BLACK);
+
     } else {
-      // Set initial player positions based on hexagonal setup
       int midRow = boardSize / 2;
       int midCol = boardSize / 2 + 1;
 
-      this.getCurrentHex(midRow, midCol).setPlayerType(PlayerType.BLACK);
-      this.getCurrentHex(midRow + 1, midCol - 1).setPlayerType(PlayerType.WHITE);
-      this.getCurrentHex(midRow, midCol - 1).setPlayerType(PlayerType.WHITE);
-      this.getCurrentHex(midRow + 1, midCol - 1).setPlayerType(PlayerType.BLACK);
-      this.getCurrentHex(midRow - 1, midCol).setPlayerType(PlayerType.BLACK);
-      this.getCurrentHex(midRow - 1, midCol + 1).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(this.boardSize / 2,
+              this.boardSize / 2 + 1).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(this.boardSize / 2 + 1,
+              this.boardSize / 2).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(this.boardSize / 2,
+              this.boardSize / 2 - 1).setPlayerType(PlayerType.WHITE);
+      this.getCurrentHex(this.boardSize / 2 + 1,
+              this.boardSize / 2 - 1).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(this.boardSize / 2 - 1,
+              this.boardSize / 2).setPlayerType(PlayerType.BLACK);
+      this.getCurrentHex(this.boardSize / 2 - 1,
+              this.boardSize / 2 + 1).setPlayerType(PlayerType.WHITE);
     }
   }
 
@@ -187,19 +193,16 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
     int q = x + this.getBoardSize() / 2;
     int r = y + this.getBoardSize() / 2;
 
-    // Check if the coordinates are valid and the hex is empty
     if (!isValidCoordinate(q, r) || getCurrentHex(r, q).getPlayerType() != PlayerType.EMPTY) {
       return false;
     }
 
     PlayerType opponent = playerType.nextPlayer();
 
-    // Check each direction for a valid line of opponent's pieces
     for (DirectionsEnum dir : DirectionsEnum.values()) {
       int nextQ = q + dir.getQMove();
       int nextR = r + dir.getRMove();
 
-      // Skip if the next hex is not opponent's or out of bounds
       if (!isValidCoordinate(nextQ, nextR)) {
         continue;
       }
@@ -212,11 +215,9 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
         continue;
       }
 
-      // Move to the next hex in the same direction
       nextQ += dir.getQMove();
       nextR += dir.getRMove();
 
-      // Continue moving in the direction and check for current player's piece
       while (isValidCoordinate(nextQ, nextR)
               && getCurrentHex(nextR, nextQ) != null
               && getCurrentHex(nextR, nextQ).getPlayerType() == opponent) {
@@ -224,7 +225,6 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
         nextR += dir.getRMove();
       }
 
-      // If a current player's piece is found, it's a valid move
       if (isValidCoordinate(nextQ, nextR) && getCurrentHex(nextR, nextQ) != null
               && getCurrentHex(nextR, nextQ).getPlayerType() == playerType) {
         return true;
@@ -240,10 +240,6 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
    */
   public boolean isValidCoordinate(int q, int r) {
     return q >= 0 && q < this.getBoardSize() && r >= 0 && r < this.getBoardSize();
-  }
-
-  private boolean isValidSquareCoordinate(int row, int col) {
-    return row >= 0 && row < this.getBoardSize() && col >= 0 && col < this.getBoardSize();
   }
 
   /**
@@ -462,7 +458,6 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
       int nextQ = x + dir.getQMove();
       int nextR = y + dir.getRMove();
 
-      // Skip if the next hex is not opponent's or out of bounds
       if (!isValidCoordinate(nextQ, nextR)) {
         continue;
       }
@@ -478,20 +473,21 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
 
       while (isValidCoordinate(nextQ, nextR) && getCurrentHex(nextR, nextQ) != null
               && getCurrentHex(nextR, nextQ).getPlayerType() == opponent) {
-        piecesToFlip.add(getCurrentHex(nextQ, nextR));
+        piecesToFlip.add(getCurrentHex(nextR, nextQ)); // Swap nextQ and nextR
         nextQ += dir.getQMove();
         nextR += dir.getRMove();
 
         if (isValidCoordinate(nextQ, nextR) && getCurrentHex(nextR, nextQ) != null) {
-          HexShape currentHex = getCurrentHex(nextR, nextQ);
+          HexShape currentHex = getCurrentHex(nextR, nextQ); // Swap nextQ and nextR
           if (currentHex.getPlayerType() == player) {
             count += piecesToFlip.size();
             break;
           }
         }
       }
+
     }
-    return count;
+      return count;
   }
 
   /**

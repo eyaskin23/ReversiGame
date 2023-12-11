@@ -3,6 +3,7 @@ package controller;
 import controller.players.Player;
 import model.BoardModel;
 import view.DrawUtils;
+import view.MockViewClass;
 
 /**
  * Mocks the controller for testing.

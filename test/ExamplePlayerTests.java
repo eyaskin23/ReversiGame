@@ -70,11 +70,36 @@ public class ExamplePlayerTests {
   }
 
   /**
+   * Tests that a piece is being correctly placed.
+   */
+  @Test
+  public void testPlaceKeySquare() {
+    HexBoard firstBoard = new HexBoard(8, true);
+    Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
+    Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
+    one.makeMove(-1, -1);
+    Assert.assertEquals(firstBoard.getCurrentHex(2, 2).getPlayerType(),
+            PlayerType.EMPTY);
+  }
+
+  /**
    * Tests that two players are correctly being initiated.
    */
   @Test
   public void testHasPassedInitalState() {
     HexBoard firstBoard = new HexBoard(7, false);
+    Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
+    Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
+    Assert.assertFalse(one.hasPassed);
+    Assert.assertFalse(two.hasPassed);
+  }
+
+  /**
+   * Tests that two players are correctly being initiated.
+   */
+  @Test
+  public void testHasPassedInitalStateSquare() {
+    HexBoard firstBoard = new HexBoard(8, true);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     Assert.assertFalse(one.hasPassed);

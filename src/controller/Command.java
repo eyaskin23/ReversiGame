@@ -3,7 +3,6 @@ package controller;
 import controller.players.AIPlayer;
 import controller.players.Player;
 import controller.players.PlayerType;
-import model.Board;
 import model.BoardModel;
 import model.HexBoard;
 import model.ReadOnlyBoardModel;
@@ -101,7 +100,7 @@ public class Command {
   }
 
   private boolean isSquare(String input) {
-    switch(input.toLowerCase()) {
+    switch (input.toLowerCase()) {
       case "square":
         return true;
       case "hex":

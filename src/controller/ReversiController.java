@@ -25,7 +25,7 @@ public class ReversiController implements PlayerActionListener, Observer, MoveHa
    * The constructor, that sets up the observers and make sure the game isn't over when started.
    * A controller consists of a player, board, and view.
    */
-  public ReversiController(Player player, BoardModel board, MockViewClass view) {
+  public ReversiController(Player player, BoardModel board, ReversiView view) {
     if (player == null) {
       throw new IllegalArgumentException("Player cannot be null");
     }
