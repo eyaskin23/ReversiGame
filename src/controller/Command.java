@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.Objects;
-
 import controller.players.AIPlayer;
 import controller.players.Player;
 import controller.players.PlayerType;
@@ -43,7 +41,7 @@ public class Command {
     }
 
     this.boardSize = Integer.parseInt(args[0]);
-    this.board = new HexBoard(boardSize, isSquare(args[3]));
+    this.board = new HexBoard(boardSize);
 
     player1 = findThePlayer(args, 1);
     player2 = findThePlayer(args, 2);

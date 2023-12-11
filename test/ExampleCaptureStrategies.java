@@ -22,7 +22,7 @@ public class ExampleCaptureStrategies {
   @Test
   public void testTopRightChosenFromStartOfGame() {
     CaptureStrategy strategy = new CaptureStrategy();
-    HexBoard mockBoard = new HexBoard(7, false);
+    HexBoard mockBoard = new HexBoard(7);
     AIPlayer player1 = new AIPlayer("Player 1", PlayerType.WHITE, mockBoard, strategy);
     Player player2 = new Player("Player 2", PlayerType.BLACK, mockBoard);
     Optional<Move> selectedMove = strategy.selectMove(mockBoard, player1);
@@ -35,7 +35,7 @@ public class ExampleCaptureStrategies {
   @Test
   public void testTopRightChosenFromStartOfGameSquare() {
     CaptureStrategy strategy = new CaptureStrategy();
-    HexBoard mockBoard = new HexBoard(8, true);
+    HexBoard mockBoard = new HexBoard(8);
     AIPlayer player1 = new AIPlayer("Player 1", PlayerType.WHITE, mockBoard, strategy);
     Player player2 = new Player("Player 2", PlayerType.BLACK, mockBoard);
     Optional<Move> selectedMove = strategy.selectMove(mockBoard, player1);
@@ -48,7 +48,7 @@ public class ExampleCaptureStrategies {
   @Test
   public void testMaxFlipChosenAfterPlayer1Goes() {
     CaptureStrategy strategy = new CaptureStrategy();
-    HexBoard mockBoard = new HexBoard(7, false);
+    HexBoard mockBoard = new HexBoard(7);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, strategy);
     player1.makeMove(-1, -1);
@@ -61,7 +61,7 @@ public class ExampleCaptureStrategies {
   @Test
   public void testChoosingTheRightCoordinateWithListOfValidMoves() {
     CaptureStrategy strategy = new CaptureStrategy();
-    HexBoard mockBoard = new HexBoard(7, false);
+    HexBoard mockBoard = new HexBoard(7);
     AIPlayer player1 = new AIPlayer("Player 1", PlayerType.WHITE, mockBoard, strategy);
     Player player2 = new Player("Player 2", PlayerType.BLACK, mockBoard);
     Optional<Move> selectedMove = strategy.selectMove(mockBoard, player1);
@@ -100,7 +100,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testPass() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
@@ -116,7 +116,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testPassSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
@@ -132,7 +132,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testGetBoardSize() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
@@ -150,7 +150,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testGetBoardSizeSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
@@ -169,7 +169,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void isNotFull() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
@@ -188,7 +188,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void isNotFullSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
@@ -207,14 +207,14 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void countPieces() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
     Assert.assertEquals(3, board1.countPieces(PlayerType.BLACK));
 
     CaptureStrategy ct = new CaptureStrategy();
-    HexBoard board2 = new HexBoard(7, false);
+    HexBoard board2 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -231,14 +231,14 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void countPiecesSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
     Assert.assertEquals(2, board1.countPieces(PlayerType.BLACK));
 
     CaptureStrategy ct = new CaptureStrategy();
-    HexBoard board2 = new HexBoard(7, false);
+    HexBoard board2 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -255,13 +255,13 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testIsValidMove() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
     Assert.assertEquals(3, board1.countPieces(PlayerType.BLACK));
     CaptureStrategy ct = new CaptureStrategy();
-    HexBoard board2 = new HexBoard(7, false);
+    HexBoard board2 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -275,13 +275,13 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testIsValidMoveSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
     Assert.assertEquals(2, board1.countPieces(PlayerType.BLACK));
     CaptureStrategy ct = new CaptureStrategy();
-    HexBoard board2 = new HexBoard(8, true);
+    HexBoard board2 = new HexBoard(8);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -295,7 +295,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testIsValidCoordinate() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -305,7 +305,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testIsValidCoordinateSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -315,13 +315,13 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void getValidMovesWithCaptures() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
     Assert.assertEquals(3, board1.countPieces(PlayerType.BLACK));
     CaptureStrategy ct = new CaptureStrategy();
-    HexBoard board2 = new HexBoard(7, false);
+    HexBoard board2 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -336,13 +336,13 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void getValidMovesWithCapturesSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
     Assert.assertEquals(2, board1.countPieces(PlayerType.BLACK));
     CaptureStrategy ct = new CaptureStrategy();
-    HexBoard board2 = new HexBoard(7, false);
+    HexBoard board2 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);
@@ -357,7 +357,7 @@ public class ExampleCaptureStrategies {
 
   @Test
   public void testIsCorner() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     List<Move> validMoves = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     Mock mock = new Mock(board1, validMoves, sb);

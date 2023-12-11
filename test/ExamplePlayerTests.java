@@ -61,7 +61,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testPlaceKey() {
-    HexBoard firstBoard = new HexBoard(7, false);
+    HexBoard firstBoard = new HexBoard(7);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     one.makeMove(-1, -1);
@@ -74,7 +74,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testPlaceKeySquare() {
-    HexBoard firstBoard = new HexBoard(8, true);
+    HexBoard firstBoard = new HexBoard(8);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     one.makeMove(-1, -1);
@@ -87,7 +87,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testHasPassedInitalState() {
-    HexBoard firstBoard = new HexBoard(7, false);
+    HexBoard firstBoard = new HexBoard(7);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     Assert.assertFalse(one.hasPassed);
@@ -99,7 +99,7 @@ public class ExamplePlayerTests {
    */
   @Test
   public void testHasPassedInitalStateSquare() {
-    HexBoard firstBoard = new HexBoard(8, true);
+    HexBoard firstBoard = new HexBoard(8);
     Player one = new Player("Sebastian", PlayerType.WHITE, firstBoard);
     Player two = new Player("Christian", PlayerType.BLACK, firstBoard);
     Assert.assertFalse(one.hasPassed);

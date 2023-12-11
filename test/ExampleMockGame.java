@@ -19,7 +19,7 @@ public class ExampleMockGame {
 
   @Test
   public void testStartGame() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
 
     Player player = new Player("Human", PlayerType.BLACK, board);
     Player player2 = new Player("Human", PlayerType.WHITE, board);

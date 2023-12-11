@@ -20,7 +20,7 @@ public class ExampleTryTwoStrats {
   @Test
   public void testingCaptureStrategyFirst() {
     TryTwo easy = new TryTwo(new CaptureStrategy(), new GoForCornersStrategy());
-    HexBoard mockBoard = new HexBoard(7, false);
+    HexBoard mockBoard = new HexBoard(7);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, easy);
     player1.makeMove(-1, -1);
@@ -33,7 +33,7 @@ public class ExampleTryTwoStrats {
   @Test
   public void testingCaptureStrategyFirstSquare() {
     TryTwo easy = new TryTwo(new CaptureStrategy(), new GoForCornersStrategy());
-    HexBoard mockBoard = new HexBoard(8, true);
+    HexBoard mockBoard = new HexBoard(8);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, easy);
     player1.makeMove(-1, 2);
@@ -46,7 +46,7 @@ public class ExampleTryTwoStrats {
   @Test
   public void testingGoForCornersFirst() {
     TryTwo easy = new TryTwo(new GoForCornersStrategy(), new CaptureStrategy());
-    HexBoard mockBoard = new HexBoard(7, false);
+    HexBoard mockBoard = new HexBoard(7);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, easy);
     player1.makeMove(-1, -1);
@@ -59,7 +59,7 @@ public class ExampleTryTwoStrats {
   @Test
   public void testingGoForCornersFirstSquare() {
     TryTwo easy = new TryTwo(new GoForCornersStrategy(), new CaptureStrategy());
-    HexBoard mockBoard = new HexBoard(8, true);
+    HexBoard mockBoard = new HexBoard(8);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, easy);
     player1.makeMove(-1, -1);
@@ -72,7 +72,7 @@ public class ExampleTryTwoStrats {
   @Test
   public void testingDoingTheSecondStrategy() {
     TryTwo easy = new TryTwo((dummyBoard, dummyPlayer) -> Optional.empty(), new CaptureStrategy());
-    HexBoard mockBoard = new HexBoard(7, false);
+    HexBoard mockBoard = new HexBoard(7);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, easy);
     player1.makeMove(-1, -1);
@@ -85,7 +85,7 @@ public class ExampleTryTwoStrats {
   @Test
   public void testingDoingTheSecondStrategySquare() {
     TryTwo easy = new TryTwo((dummyBoard, dummyPlayer) -> Optional.empty(), new CaptureStrategy());
-    HexBoard mockBoard = new HexBoard(8, true);
+    HexBoard mockBoard = new HexBoard(8);
     Player player1 = new Player("Player 2", PlayerType.WHITE, mockBoard);
     AIPlayer player2 = new AIPlayer("Player 1", PlayerType.BLACK, mockBoard, easy);
     player1.makeMove(-1, -1);
@@ -94,5 +94,4 @@ public class ExampleTryTwoStrats {
     Optional<Move> expectedMove = Optional.of(new Move(1, -2, 2));
     Assert.assertNotEquals(selectedMove.get().getX(), expectedMove.get().getX());
   }
-
 }

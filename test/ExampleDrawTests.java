@@ -31,8 +31,8 @@ public class ExampleDrawTests {
   @Test
   public void testInitialization() {
     JFrame frame = new JFrame();
-    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
-    SquareView square = new SquareView(new HexBoard(8, true));
+    DrawUtils draw = new DrawUtils(new HexBoard(11));
+    SquareView square = new SquareView(new HexBoard(8));
     frame.add(draw);
     frame.add(square);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +44,7 @@ public class ExampleDrawTests {
   @Test
   public void testInitializationSquare() {
     JFrame frame = new JFrame();
-    SquareView draw = new SquareView(new HexBoard(8, true));
+    SquareView draw = new SquareView(new HexBoard(8));
     frame.add(draw);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 600);
@@ -68,7 +68,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testFindHex() {
-    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
+    DrawUtils draw = new DrawUtils(new HexBoard(11));
     int x = draw.getWidth() / 2;
     int y = draw.getHeight() / 2;
     HexShape hex = draw.findHex(x, y);
@@ -77,12 +77,12 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetHexSize() {
-    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
+    DrawUtils draw = new DrawUtils(new HexBoard(11));
     draw.setSize(600, 600);
     int hexSize = draw.getHexSize();
     System.out.print(draw.getHexSize());
     Assert.assertTrue(hexSize > 0 && hexSize % 2 == 0);
-    SquareView square = new SquareView(new HexBoard(8, true));
+    SquareView square = new SquareView(new HexBoard(8));
     square.setSize(600, 600);
     int hexSizeSquare = square.getHexSize();
     System.out.print(draw.getHexSize());
@@ -92,7 +92,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testIsPointInHex() {
-    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
+    DrawUtils draw = new DrawUtils(new HexBoard(11));
     int x = draw.getWidth() / 2;
     int y = draw.getHeight() / 2;
 
@@ -103,7 +103,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testIsPointInSquare() {
-    SquareView draw = new SquareView(new HexBoard(8, true));
+    SquareView draw = new SquareView(new HexBoard(8));
     int x = draw.getWidth() / 2;
     int y = draw.getHeight() / 2;
 
@@ -114,7 +114,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetWindowWidth() {
-    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
+    DrawUtils draw = new DrawUtils(new HexBoard(11));
 
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,7 +133,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetWindowWidthSquare() {
-    SquareView draw = new SquareView(new HexBoard(8, true));
+    SquareView draw = new SquareView(new HexBoard(8));
 
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -153,7 +153,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetWindowHeight() {
-    DrawUtils draw = new DrawUtils(new HexBoard(11, false));
+    DrawUtils draw = new DrawUtils(new HexBoard(11));
     draw.setSize(600, 600);
     int windowHeight = draw.getWindowHeight();
     Assert.assertEquals(windowHeight, 600);
@@ -161,7 +161,7 @@ public class ExampleDrawTests {
 
   @Test
   public void testGetWindowHeightSquare() {
-    SquareView draw = new SquareView(new HexBoard(8, true));
+    SquareView draw = new SquareView(new HexBoard(8));
     draw.setSize(600, 600);
     int windowHeight = draw.getWindowHeight();
     Assert.assertEquals(windowHeight, 600);

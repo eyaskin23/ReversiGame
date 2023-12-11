@@ -4,6 +4,8 @@ import controller.DirectionsEnum;
 import controller.players.Player;
 import controller.players.PlayerType;
 import view.Observer;
+import view.ReversiView;
+import view.SquareView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
  */
 public class HexBoard implements ReadOnlyBoardModel, BoardModel {
   private boolean isGameOver = false;
+  private ReversiView view;
 
   private List<Observer> observers = new ArrayList<>();
 
@@ -41,7 +44,7 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
    * A default board is size 7.
    */
   public HexBoard() {
-    this(7, false);
+    this(7);
   }
 
   /**
@@ -49,10 +52,10 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
    * Throws an exception if the game size is even or less than 5,
    * because a valid hexagon cannot be created from either value.
    */
-  public HexBoard(int sizeOfBoard, boolean isForSquare) {
+  public HexBoard(int sizeOfBoard) {
     this.currentTurn = PlayerType.BLACK;
 
-    if ((isForSquare && sizeOfBoard % 2 != 0) || sizeOfBoard < 5) {
+    if (sizeOfBoard < 5) {
       throw new IllegalStateException("The game must be a minimum of size 5, " +
               "but if it's for squares, it must be even! And if it's for Hex it can't be even");
     }
@@ -68,7 +71,8 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
       }
     }
 
-    if (isForSquare) {
+    if (sizeOfBoard == 8) {
+
       int midRow = boardSize / 2;
       int midCol = boardSize / 2;
 
@@ -387,7 +391,7 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
    * Makes a deep copy of the board that players can access.
    */
   public HexBoard deepCopy() {
-    HexBoard newBoard = new HexBoard(this.boardSize, false);
+    HexBoard newBoard = new HexBoard(this.boardSize);
     for (int i = 0; i < boardSize; i++) {
       for (int j = 0; j < boardSize; j++) {
         if (this.cellsThatMakeTheBoard[i][j] != null) {

@@ -14,8 +14,8 @@ import controller.TextualController;
  */
 public class ExampleReadOnlyTests {
 
-  HexBoard board = new HexBoard(11, false);
-  HexBoard square = new HexBoard(8, true);
+  HexBoard board = new HexBoard(11);
+  HexBoard square = new HexBoard(8);
 
   /**
    * Tests a Board that is given a negative number which
@@ -23,7 +23,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testingNegativeBoardValid() {
-    Assert.assertThrows(IllegalStateException.class, () -> new HexBoard(-6, false));
+    Assert.assertThrows(IllegalStateException.class, () -> new HexBoard(-6));
   }
 
   /**
@@ -32,16 +32,15 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testingNegativeBoardValidSquare() {
-    Assert.assertThrows(IllegalStateException.class, () -> new HexBoard(-6, true));
+    Assert.assertThrows(IllegalStateException.class, () -> new HexBoard(-6));
   }
-
 
   /**
    * Tests that coordinates of a 2D array are correct in our model.
    */
   @Test
   public void testingCoordinatesOfAHexagonBasedOn2DArray() {
-    HexBoard regularBoard = new HexBoard(7, false);
+    HexBoard regularBoard = new HexBoard(7);
 
     HexShape topLeft = regularBoard.getCurrentHex(0, 3);
     HexShape topLeftRepresentation = new HexShape(-3, 0, null);
@@ -74,7 +73,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testingCoordinatesOfAHexagonBasedOn2DArraySquare() {
-    HexBoard regularBoard = new HexBoard(8, true);
+    HexBoard regularBoard = new HexBoard(8);
 
     HexShape topLeft = regularBoard.getCurrentHex(0, 3);
     HexShape topLeftRepresentation = new HexShape(-3, 0, null);
@@ -184,7 +183,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testValidMove() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Assert.assertTrue(board1.isValidMove(-1, -1, PlayerType.WHITE));
   }
 
@@ -193,7 +192,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testValidMoveSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Assert.assertFalse(board1.isValidMove(0, 0, PlayerType.WHITE));
   }
 
@@ -228,7 +227,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testCount() {
-    HexBoard board = new HexBoard(11, false);
+    HexBoard board = new HexBoard(11);
     Player player1 = new Player("e", PlayerType.WHITE, board);
 
     player1.makeMove(-1, -1);
@@ -249,7 +248,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testCountSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     Player player1 = new Player("e", PlayerType.WHITE, square);
 
     player1.makeMove(-1, -1);
@@ -326,13 +325,13 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testGetBoardSize() {
-    HexBoard board1 = new HexBoard(11, false);
+    HexBoard board1 = new HexBoard(11);
     Assert.assertEquals(11, board1.getBoardSize());
 
     HexBoard board2 = new HexBoard();
     Assert.assertEquals(7, board2.getBoardSize());
 
-    HexBoard board3 = new HexBoard(15, false);
+    HexBoard board3 = new HexBoard(15);
     Assert.assertEquals(15, board3.getBoardSize());
 
   }
@@ -342,7 +341,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testGetSquareBoardSize() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Assert.assertEquals(8, board1.getBoardSize());
   }
 
@@ -351,7 +350,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testCountPiecesAfter1Move() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(3, board1.countPieces(PlayerType.WHITE));
@@ -367,7 +366,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testCountPiecesAfter1MoveSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     Assert.assertEquals(2, board1.countPieces(PlayerType.WHITE));
@@ -400,7 +399,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testValidCoordinates() {
-    HexBoard board = new HexBoard(7, false); // board size is now 7
+    HexBoard board = new HexBoard(7); // board size is now 7
 
     Assert.assertTrue(board.isValidCoordinate(0, 0));  // Top-left corner
     Assert.assertTrue(board.isValidCoordinate(0, 6));  // Top-right corner
@@ -414,7 +413,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testValidCoordinatesSquare() {
-    HexBoard board = new HexBoard(8, true); // board size is now 8
+    HexBoard board = new HexBoard(8); // board size is now 8
 
     Assert.assertTrue(board.isValidCoordinate(0, 0));  // Top-left corner
     Assert.assertTrue(board.isValidCoordinate(0, 6));  // Top-right corner
@@ -428,7 +427,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testInvalidCoordinates() {
-    HexBoard board = new HexBoard(7, false); // board size is now 7
+    HexBoard board = new HexBoard(7); // board size is now 7
 
     Assert.assertFalse(board.isValidCoordinate(-1, 0));  // Negative q
     Assert.assertFalse(board.isValidCoordinate(0, -1));  // Negative r
@@ -444,7 +443,7 @@ public class ExampleReadOnlyTests {
    */
   @Test
   public void testInvalidCoordinatesSquare() {
-    HexBoard board = new HexBoard(8, true); // board size is now 7
+    HexBoard board = new HexBoard(8); // board size is now 7
 
     Assert.assertFalse(board.isValidCoordinate(-1, 0));  // Negative q
     Assert.assertFalse(board.isValidCoordinate(0, -1));  // Negative r
@@ -501,7 +500,7 @@ public class ExampleReadOnlyTests {
 
   @Test
   public void testCopy() {
-    HexBoard original = new HexBoard(7, false);
+    HexBoard original = new HexBoard(7);
     original.placePiece(3, 3, PlayerType.BLACK);
     original.placePiece(4, 4, PlayerType.WHITE);
     original.playerPass(PlayerType.WHITE);
@@ -538,7 +537,7 @@ public class ExampleReadOnlyTests {
 
   @Test
   public void testCopySquare() {
-    HexBoard original = new HexBoard(8, true);
+    HexBoard original = new HexBoard(8);
     original.placePiece(3, 3, PlayerType.BLACK);
     original.placePiece(4, 4, PlayerType.WHITE);
     original.playerPass(PlayerType.WHITE);

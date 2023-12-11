@@ -1,12 +1,32 @@
-Dec 11, 2023 1:33:03 AM model.strategies.GoForCornersStrategy selectMove
-INFO: Selecting move for player: Computer White
-Dec 11, 2023 1:33:03 AM model.strategies.GoForCornersStrategy selectMove
-INFO: Selected move: 1, 1
-Dec 11, 2023 1:33:08 AM model.strategies.GoForCornersStrategy selectMove
-INFO: Selecting move for player: Computer White
-Dec 11, 2023 1:33:08 AM model.strategies.GoForCornersStrategy selectMove
-INFO: Selected move: -2, 3
-Dec 11, 2023 1:33:12 AM model.strategies.GoForCornersStrategy selectMove
-INFO: Selecting move for player: Computer White
-Dec 11, 2023 1:33:12 AM model.strategies.GoForCornersStrategy selectMove
-INFO: Selected move: 3, -2
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 0, -2
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 1 pieces!
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 1, -2
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 1 pieces!
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 1, -2
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 1 pieces!
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Selected move: 0, -2
+Dec 11, 2023 10:44:30 AM model.strategies.CaptureStrategy selectMove
+INFO: Capturing 1 pieces!
+Dec 11, 2023 10:44:30 AM model.strategies.GoForCornersStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 10:44:30 AM model.strategies.GoForCornersStrategy selectMove
+INFO: Selected move: 2, -1
+Dec 11, 2023 10:44:30 AM model.strategies.GoForCornersStrategy selectMove
+INFO: Selecting move for player: Computer Black
+Dec 11, 2023 10:44:30 AM model.strategies.GoForCornersStrategy selectMove
+INFO: Selected move: 1, -1

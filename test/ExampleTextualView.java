@@ -24,7 +24,7 @@ public class ExampleTextualView {
    */
   @Test
   public void testInitialBoard() {
-    HexBoard board = new HexBoard(11, false);
+    HexBoard board = new HexBoard(11);
     TextualController controller = new TextualController(board);
     Assert.assertEquals(controller.toString(),
             "     _ _ _ _ _ _ \n" +

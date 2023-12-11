@@ -17,7 +17,7 @@ public class ExampleMockView {
 
   @Test
   public void testHandleGameOver() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
     MockViewClass view = new MockViewClass(board);
     view.handleGameOver();
     Assert.assertTrue(view.getLog().contains("Handled Game Over"));
@@ -25,7 +25,7 @@ public class ExampleMockView {
 
   @Test
   public void testHandleGameOverSquare() {
-    ReadOnlyBoardModel board = new HexBoard(8, true);
+    ReadOnlyBoardModel board = new HexBoard(8);
     MockViewClass view = new MockViewClass(board);
     view.handleGameOver();
     Assert.assertTrue(view.getLog().contains("Handled Game Over"));
@@ -33,7 +33,7 @@ public class ExampleMockView {
 
   @Test
   public void testResetGameOverHandledAndGetGameOverHandleState() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
     Player player = new Player("Human", PlayerType.BLACK, board);
     Player player2 = new Player("Human", PlayerType.WHITE, board);
     BoardModel boardReg = board.getRegularBoard();
@@ -48,7 +48,7 @@ public class ExampleMockView {
 
   @Test
   public void testResetGameOverHandledAndGetGameOverHandleStateSquare() {
-    ReadOnlyBoardModel board = new HexBoard(8, true);
+    ReadOnlyBoardModel board = new HexBoard(8);
     Player player = new Player("Human", PlayerType.BLACK, board);
     Player player2 = new Player("Human", PlayerType.WHITE, board);
     BoardModel boardReg = board.getRegularBoard();
@@ -63,7 +63,7 @@ public class ExampleMockView {
 
   @Test
   public void testSettingScore() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
     MockViewClass view = new MockViewClass(board);
     view.setScoreLabel(new JLabel("Dummy score"));
     Assert.assertTrue(view.getLog().contains("Setting Score."));
@@ -71,7 +71,7 @@ public class ExampleMockView {
 
   @Test
   public void testSettingScoreSquare() {
-    ReadOnlyBoardModel board = new HexBoard(8, true);
+    ReadOnlyBoardModel board = new HexBoard(8);
     MockViewClass view = new MockViewClass(board);
     view.setScoreLabel(new JLabel("Dummy score"));
     Assert.assertTrue(view.getLog().contains("Setting Score."));

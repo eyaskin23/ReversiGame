@@ -21,7 +21,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testPass() {
-    HexBoard board1 = new HexBoard(7, false);
+    HexBoard board1 = new HexBoard(7);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     player1.makeMove(-1, -1);
@@ -37,7 +37,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testPassSquare() {
-    HexBoard board1 = new HexBoard(8, true);
+    HexBoard board1 = new HexBoard(8);
     Player player1 = new Player("Player1", PlayerType.WHITE, board1);
     Player player2 = new Player("Player2", PlayerType.BLACK, board1);
     player1.makeMove(-1, 2);
@@ -53,7 +53,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetScoreWhiteBlack() {
-    HexBoard board = new HexBoard(7, false);
+    HexBoard board = new HexBoard(7);
     List<Move> valid = new ArrayList<>();
     valid.add(new Move(0, 1));
     valid.add(new Move(1, 1));
@@ -67,7 +67,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetScoreWhiteBlackSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     List<Move> valid = new ArrayList<>();
     valid.add(new Move(0, 1));
     valid.add(new Move(1, 1));
@@ -81,7 +81,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetBoardSize() {
-    HexBoard board = new HexBoard(7, false);
+    HexBoard board = new HexBoard(7);
     List<Move> valid = new ArrayList<>();
     valid.add(new Move(0, 1));
     valid.add(new Move(1, 1));
@@ -96,7 +96,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetBoardSizeSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     List<Move> valid = new ArrayList<>();
     valid.add(new Move(0, 1));
     valid.add(new Move(1, 1));
@@ -111,7 +111,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testBoardFull() {
-    HexBoard board = new HexBoard(7, false);
+    HexBoard board = new HexBoard(7);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     StringBuilder sb = new StringBuilder();
@@ -124,7 +124,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testBoardFullSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     StringBuilder sb = new StringBuilder();
@@ -137,7 +137,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void countPieces() {
-    HexBoard board = new HexBoard(7, false);
+    HexBoard board = new HexBoard(7);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board, gfc);
@@ -151,7 +151,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void countPiecesSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board, gfc);
@@ -178,7 +178,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testValidCoordinate() {
-    HexBoard board = new HexBoard(7, false);
+    HexBoard board = new HexBoard(7);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board, gfc);
@@ -192,7 +192,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testValidCoordinateSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
     AIPlayer player = new AIPlayer("", PlayerType.WHITE, board, gfc);
@@ -206,7 +206,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetValidMovesWithCaptures() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
     HexBoard board1 = new HexBoard();
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
@@ -221,7 +221,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testGetValidMovesWithCapturesSquare() {
-    ReadOnlyBoardModel board = new HexBoard(8, true);
+    ReadOnlyBoardModel board = new HexBoard(8);
     HexBoard board1 = new HexBoard();
     List<Move> valid = new ArrayList<>();
     GoForCornersStrategy gfc = new GoForCornersStrategy();
@@ -236,7 +236,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testIsCornerMove() {
-    HexBoard board = new HexBoard(7, false);
+    HexBoard board = new HexBoard(7);
     List<Move> valid = new ArrayList<>();
     Move move = new Move(0, 0);
     valid.add(move);
@@ -252,7 +252,7 @@ public class ExampleGoForCornerStrategies {
 
   @Test
   public void testIsCornerMoveSquare() {
-    HexBoard board = new HexBoard(8, true);
+    HexBoard board = new HexBoard(8);
     List<Move> valid = new ArrayList<>();
     Move move = new Move(0, 0);
     valid.add(move);

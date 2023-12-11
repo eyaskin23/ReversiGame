@@ -18,7 +18,21 @@ public class ExampleMockController {
 
   @Test
   public void testOnPass() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
+    Player player = new Player("Human", PlayerType.BLACK, board);
+    DrawUtils view = new DrawUtils(board);
+    JLabel score = new JLabel("Dummy Score");
+    view.setScoreLabel(score);
+    BoardModel boardReg = board.getRegularBoard();
+    MockController controller1 = new MockController(player, boardReg, view);
+    player.setMoveHandler(controller1);
+    controller1.onPass();
+    Assert.assertTrue(controller1.getLog().toString().contains("Player passed"));
+  }
+
+  @Test
+  public void testOnPassSquare() {
+    ReadOnlyBoardModel board = new HexBoard(8);
     Player player = new Player("Human", PlayerType.BLACK, board);
     DrawUtils view = new DrawUtils(board);
     JLabel score = new JLabel("Dummy Score");
@@ -32,7 +46,7 @@ public class ExampleMockController {
 
   @Test
   public void testOnPlayerMove() {
-    ReadOnlyBoardModel board = new HexBoard(7, false);
+    ReadOnlyBoardModel board = new HexBoard(7);
     Player player = new Player("Human", PlayerType.BLACK, board);
     DrawUtils view = new DrawUtils(board);
     JLabel score = new JLabel("Dummy Score");

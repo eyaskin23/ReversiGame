@@ -31,7 +31,7 @@ public final class TextualEntry {
       if (chosenSizeOfBoard == 0) {
         currentBoard = new HexBoard();
       } else {
-        currentBoard = new HexBoard(chosenSizeOfBoard, false);
+        currentBoard = new HexBoard(chosenSizeOfBoard);
       }
       TextualController boardGenerator = new TextualController(currentBoard);
       System.out.println(boardGenerator);

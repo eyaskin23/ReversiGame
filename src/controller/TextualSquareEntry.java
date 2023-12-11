@@ -29,9 +29,9 @@ public final class TextualSquareEntry {
 
     try {
       if (chosenSizeOfBoard == 0) {
-        currentBoard = new HexBoard(8, true);
+        currentBoard = new HexBoard(8);
       } else {
-        currentBoard = new HexBoard(chosenSizeOfBoard, false);
+        currentBoard = new HexBoard(chosenSizeOfBoard);
       }
       TextualSquareController boardGenerator = new TextualSquareController(currentBoard);
       System.out.println(boardGenerator);
