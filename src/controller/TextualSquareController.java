@@ -15,6 +15,9 @@ public class TextualSquareController implements ReversiTextualView {
   private final HexBoard board;
   private Appendable output;
 
+  /**
+   * Constructor for creating the controller for the square textual board.
+   */
   public TextualSquareController(HexBoard board) {
     if (board == null) {
       throw new IllegalArgumentException("Board cannot be null.");

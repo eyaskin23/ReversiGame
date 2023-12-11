@@ -62,10 +62,6 @@ public final class TextualSquareEntry {
       players.add(new Player("Computer", PlayerType.BLACK, currentBoard));
     }
 
-    for (Player player : players) {
-      //player.setHasPassed();
-    }
-
     TextualSquareController boardGenerator = new TextualSquareController(currentBoard);
     System.out.println(boardGenerator);
 
@@ -85,6 +81,7 @@ public final class TextualSquareEntry {
               currentBoard.placePiece(x, y, player.getType());
               validMoveMade = true;
             } catch (IllegalArgumentException e) {
+              // No valid moves left.
             }
           }
         } else {
