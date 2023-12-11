@@ -336,3 +336,15 @@ General Observations
 - My classes were not too coupled, and it was overall easy to implement a new view into existing code
 - Changes primarily involved updating instances of the original view to use the ReversiView interface.
 - Creation of a new view for the square board was straightforward, and overall integration was smooth.
+
+IMPORTANT :
+- a valid command line for extra - credit could either be from (but not limited to):
+
+Square : 
+8 human human square
+8 capture capture square
+8 human capture square
+
+Hex : 
+11 human human hex
+11 human capture square

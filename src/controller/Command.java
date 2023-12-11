@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Objects;
+
 import controller.players.AIPlayer;
 import controller.players.Player;
 import controller.players.PlayerType;
@@ -10,6 +12,8 @@ import model.strategies.CaptureStrategy;
 import model.strategies.GoForCornersStrategy;
 import model.strategies.IStrategy;
 import model.strategies.TryTwo;
+import view.DrawUtils;
+import view.SquareView;
 
 /**
  * A command class for the command line to work.
@@ -100,6 +104,12 @@ public class Command {
   }
 
   private boolean isSquare(String input) {
+    if (input.equals("hex") && board instanceof SquareView) {
+      throw new IllegalArgumentException("Square View cannot contain a hex board.");
+    }
+    if (input.equals("square") && board instanceof DrawUtils) {
+      throw new IllegalArgumentException("Hex View cannot contain a square board.");
+    }
     switch (input.toLowerCase()) {
       case "square":
         return true;

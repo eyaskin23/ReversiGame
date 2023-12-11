@@ -54,7 +54,7 @@ public class HexBoard implements ReadOnlyBoardModel, BoardModel {
 
     if ((isForSquare && sizeOfBoard % 2 != 0) || sizeOfBoard < 5) {
       throw new IllegalStateException("The game must be a minimum of size 5, " +
-              "but if it's for squares, it must be even!");
+              "but if it's for squares, it must be even! And if it's for Hex it can't be even");
     }
 
     boardSize = sizeOfBoard;
